@@ -3,6 +3,7 @@
 #include <utility>
 
 // https://godbolt.org/z/eTbsxcq96
+// https://github.com/alvmiller/simple_min_and_sum_examples_cpp/blob/main/min_and_sum.cpp
 
 // -----------------------------------------------------------------------------
 
