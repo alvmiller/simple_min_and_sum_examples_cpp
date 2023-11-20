@@ -1,8 +1,7 @@
 #include <algorithm>
 #include <cassert>
-#include <utility>
 
-// https://godbolt.org/z/eTbsxcq96
+// https://godbolt.org/z/aKahEbGnq
 // https://github.com/alvmiller/simple_min_and_sum_examples_cpp/blob/main/min_and_sum.cpp
 
 // -----------------------------------------------------------------------------
@@ -16,7 +15,7 @@ constexpr auto min(T&& arg)
 template<typename T, typename ... Ts>
 constexpr auto min(T&& arg, Ts&& ... args)
 {
-    return std::min(std::forward<T>(arg), min(std::forward<Ts>(args)...));
+    return std::min(std::forward<T>(arg), min(std::forward<Ts>(args) ...));
 }
 
 // -----------------------------------------------------------------------------
@@ -29,8 +28,9 @@ constexpr auto sum()
 }
 
 template <typename T, typename ... Ts>
-constexpr auto sum(T&& arg, Ts&& ... args) {
-    return arg + sum(std::forward<Ts>(args)...);
+constexpr auto sum(T&& arg, Ts&& ... args)
+{
+    return arg + sum(std::forward<Ts>(args) ...);
 }
 
 // -----------------------------------------------------------------------------
@@ -39,7 +39,7 @@ int main()
 {
     // -------------------------------------------------------------------------
 
-    static_assert(min(3, 1, 2) == 1, "Bad minimum result"); // CT check
+    static_assert(min(3, 1, 2) == 1, "Bad compile time minimum result"); // CT check
     assert(min(3, 1, 2) == 1); // RT(dbg) check
 
     // -------------------------------------------------------------------------
